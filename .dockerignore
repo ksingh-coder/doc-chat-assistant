@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables (will be provided via docker-compose)
+.env
+
+# Data (will be mounted as volume)
+data/documents/*
+data/vectorstore/*
+
+# Logs (will be mounted as volume)
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+STREAMLIT_GUIDE.md
+sample_document.md
+
+# Docker
+Dockerfile*
+docker-compose.yml
+.dockerignore

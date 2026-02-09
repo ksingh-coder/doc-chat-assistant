@@ -1,0 +1,42 @@
+services:
+  # Backend API Service
+  rag-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data:z
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - rag-network
+
+  # Frontend UI Service
+  rag-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    container_name: rag-ui
+    ports:
+      - "8501:8501"
+    environment:
+      - API_BASE_URL=http://rag-api:8000/api/v1
+    depends_on:
+      - rag-api
+    restart: unless-stopped
+    networks:
+      - rag-network
+
+networks:
+  rag-network:
+    driver: bridge
