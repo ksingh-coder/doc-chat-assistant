@@ -23,8 +23,6 @@ docker-compose up -d
 
 That's it! Both services are running in Docker containers with **CPU-only PyTorch** and **UV package manager** for lightning-fast builds (1-2s rebuilds vs minutes with pip).
 
-> 📖 For detailed Docker deployment guide, troubleshooting, and production tips, see [DOCKER.md](DOCKER.md)
-
 ## Features
 
 - 📄 Support for multiple document formats (PDF, TXT, Markdown)
@@ -171,7 +169,6 @@ docker-compose down
 - 🚀 **Fast Rebuilds**: Code changes rebuild in 1-2 seconds
 - 📝 **Container Logs**: Logs stored inside containers (not mounted)
 
-> 📖 See [DOCKER.md](DOCKER.md) for detailed deployment guide, troubleshooting, and production tips.
 
 ## API Usage
 
@@ -390,11 +387,3 @@ docker exec rag-api python -c "import torch; print(f'PyTorch: {torch.__version__
 3. **Memory Issues**: Reduce `CHUNK_SIZE` or use smaller embedding models
 
 4. **FAISS Not Loading**: Delete `data/vectorstore/` and re-upload documents
-
-## License
-
-MIT
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
